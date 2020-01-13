@@ -23,7 +23,13 @@
 
 package com.iluwatar.prototype;
 
+import cn.hutool.crypto.symmetric.DES;
 import org.junit.jupiter.api.Test;
+
+import javax.crypto.*;
+import javax.crypto.spec.SecretKeySpec;
+import java.io.*;
+
 
 /**
  * 
@@ -31,7 +37,68 @@ import org.junit.jupiter.api.Test;
  *
  */
 public class AppTest {
+  @Test
+  public void testBeanUtils() throws Exception {
+      User user = new User();
+      user.setName("宠物");
+      ElfMage elfMage = new ElfMage("大法师");
+      elfMage.setUser(user);
+      ElfMage elfMage1 = new ElfMage();
+      ByteArrayOutputStream out = new ByteArrayOutputStream();
+      ObjectOutputStream oos = new ObjectOutputStream(out);
+      oos.writeObject(elfMage);
+      ByteArrayInputStream inputStream = new ByteArrayInputStream(out.toByteArray());
+      ObjectInputStream ois = new ObjectInputStream(inputStream);
+      oos.close();
+      out.close();
+      ois.close();
+      inputStream.close();
+      elfMage1 = (ElfMage) ois.readObject();
+    System.out.println(elfMage.getUser()==elfMage1.getUser());
 
+  }
+
+    /**
+     * 序列化对象到磁盘
+     * @throws Exception
+     */
+  @Test
+  public void ObjectToSerializable()throws Exception {
+      SecretKey key = new SecretKeySpec("bingjianbingjianbingjian".getBytes(),"DESede");
+      //加密要用Cipher来实现
+      Cipher cipher   =   Cipher.getInstance( "DESede");
+      cipher.init(Cipher.ENCRYPT_MODE,key);
+      User user = new User();
+      user.setName("宠物");
+      user.setAddress("上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市上海市");
+      user.setAge("123");
+      user.setPhone("1037129032");
+      ElfMage elfMage = new ElfMage("大法师");
+      elfMage.setUser(user);
+      File file = new File(user.getName());
+      if(file.exists()){
+          file.delete();
+      }
+      ObjectOutputStream oos = new ObjectOutputStream(new CipherOutputStream(new BufferedOutputStream(new FileOutputStream(file)),cipher));
+      oos.writeObject(elfMage);
+      oos.close();
+
+
+  }
+    /**
+     * 读取磁盘到对象
+     * @throws Exception
+     */
+  @Test
+  public void SerializableToObject()throws Exception {
+      File file = new File("宠物" );
+      Cipher cipher1 = Cipher.getInstance("DESede");
+      SecretKey key = new SecretKeySpec("bingjianbingjianbingjian".getBytes(),"DESede");
+      cipher1.init(Cipher.DECRYPT_MODE,key);
+      ObjectInputStream ois = new ObjectInputStream(new CipherInputStream(new BufferedInputStream(new FileInputStream(file)), cipher1));
+      ElfMage object = (ElfMage) ois.readObject();
+      System.out.println(object);
+  }
   @Test
   public void test() {
     String[] args = {};

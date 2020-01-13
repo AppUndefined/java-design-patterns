@@ -30,7 +30,7 @@ public class HeroFactoryImpl implements HeroFactory {
 
   private Mage mage;
   private Warlord warlord;
-  private Beast beast;
+  private Beast   beast;
 
   /**
    * Constructor.

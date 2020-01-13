@@ -23,13 +23,19 @@
 
 package com.iluwatar.prototype;
 
+import lombok.Data;
+
+import java.io.Serializable;
+
 /**
  * ElfMage.
  */
-public class ElfMage extends Mage {
-
+@Data
+public class ElfMage extends Mage implements Serializable {
+  private User user;
   private String helpType;
-
+  public ElfMage() {
+  }
   public ElfMage(String helpType) {
     this.helpType = helpType;
   }
