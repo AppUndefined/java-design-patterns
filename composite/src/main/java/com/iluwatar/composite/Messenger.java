@@ -63,4 +63,10 @@ public class Messenger {
 
   }
 
+  public LetterComposite messageFromUser() {
+    var words = List.of(new Word('W', 'h', 'o'),
+            new Word('i', 's'),
+            new Word('y', 'o', 'u'));
+    return new Sentence(words);
+  }
 }

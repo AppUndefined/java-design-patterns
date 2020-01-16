@@ -23,26 +23,29 @@
 
 package com.iluwatar.visitor;
 
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.verify;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * Date: 12/30/15 - 19:45 PM.
- *
- * @author Jeroen Meulemeester
+ * 首长访问者，来了之后所有人都要说首长好
+ * .
  */
-public class CommanderTest extends UnitTest<Commander> {
+public class PrimeMinister implements UnitVisitor {
 
-  /**
-   * Create a new test instance for the given {@link Commander}.
-   */
-  public CommanderTest() {
-    super(Commander::new);
+  private static final Logger LOGGER = LoggerFactory.getLogger(PrimeMinister.class);
+
+  @Override
+  public void visit(Soldier soldier) {
+    LOGGER.info("首长好  --from:{}", soldier);
   }
 
   @Override
-  void verifyVisit(Commander unit, UnitVisitor mockedVisitor) {
-    verify(mockedVisitor).visit(eq(unit));
+  public void visit(Sergeant sergeant) {
+      LOGGER.info("首长好  --from:{}", sergeant);
   }
-
+  @Override
+  public void visit(Commander commander) {
+    LOGGER.info("首长好  --from:{}", commander);
+  }
 }
+

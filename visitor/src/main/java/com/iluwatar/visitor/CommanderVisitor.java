@@ -34,17 +34,19 @@ public class CommanderVisitor implements UnitVisitor {
   private static final Logger LOGGER = LoggerFactory.getLogger(CommanderVisitor.class);
 
   @Override
-  public void visitSoldier(Soldier soldier) {
+  public void visit(Soldier soldier) {
+    System.out.println("Do nothing");
     // Do nothing
   }
 
   @Override
-  public void visitSergeant(Sergeant sergeant) {
+  public void visit(Sergeant sergeant) {
+    System.out.println("Do nothing");
     // Do nothing
   }
 
   @Override
-  public void visitCommander(Commander commander) {
+  public void visit(Commander commander) {
     LOGGER.info("Good to see you {}", commander);
   }
 }

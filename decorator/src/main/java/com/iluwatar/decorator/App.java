@@ -54,8 +54,9 @@ public class App {
     troll.fleeBattle();
     LOGGER.info("Simple troll power {}.\n", troll.getAttackPower());
 
-    // change the behavior of the simple troll by adding a decorator
+    // change the behavior of the simple troll by adding a decorator（通过添加装饰器来更改简单巨魔的行为）
     LOGGER.info("A troll with huge club surprises you.");
+    //将要装饰的对象放入新对象，并对该对象的各种行为添加装饰
     var clubbedTroll = new ClubbedTroll(troll);
     clubbedTroll.attack();
     clubbedTroll.fleeBattle();

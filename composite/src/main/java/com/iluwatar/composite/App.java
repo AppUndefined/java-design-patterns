@@ -51,10 +51,14 @@ public class App {
 
     var orcMessage = new Messenger().messageFromOrcs();
     orcMessage.print();
-
     LOGGER.info("\nMessage from the elves: ");
-
     var elfMessage = new Messenger().messageFromElves();
     elfMessage.print();
+    LOGGER.info("\nMessage from the user: ");
+    var user = new Messenger().messageFromUser();
+    user.print();
+
+
+
   }
 }

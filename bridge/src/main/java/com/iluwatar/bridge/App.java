@@ -39,6 +39,7 @@ import org.slf4j.LoggerFactory;
  * enchantments. We can easily combine any weapon with any enchantment using composition instead of
  * creating deep class hierarchy.
  */
+
 public class App {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
@@ -50,16 +51,22 @@ public class App {
    */
   public static void main(String[] args) {
 
-    LOGGER.info("The knight receives an enchanted sword.");
+    LOGGER.info("骑士收到一把附魔剑.");
     var enchantedSword = new Sword(new SoulEatingEnchantment());
     enchantedSword.wield();
     enchantedSword.swing();
     enchantedSword.unwield();
 
-    LOGGER.info("The valkyrie receives an enchanted hammer.");
+    LOGGER.info("女武神得到了一个附魔的锤子.");
     var hammer = new Hammer(new FlyingEnchantment());
     hammer.wield();
     hammer.swing();
     hammer.unwield();
+
+      LOGGER.info("女武神得到了一把附魔的锤子.");
+      var hammer2 = new Hammer(new SoulEatingEnchantment());
+      hammer2.wield();
+      hammer2.swing();
+      hammer2.unwield();
   }
 }
