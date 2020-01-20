@@ -54,7 +54,6 @@ public class App {
     Weather weather = new Weather();
     weather.addObserver(new Orcs());
     weather.addObserver(new Hobbits());
-
     weather.timePasses();
     weather.timePasses();
     weather.timePasses();
@@ -65,7 +64,6 @@ public class App {
     GWeather genericWeather = new GWeather();
     genericWeather.addObserver(new GOrcs());
     genericWeather.addObserver(new GHobbits());
-
     genericWeather.timePasses();
     genericWeather.timePasses();
     genericWeather.timePasses();

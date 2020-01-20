@@ -35,7 +35,7 @@ public class SpellStrategy implements DragonSlayingStrategy {
 
   @Override
   public void execute() {
-    LOGGER.info("You cast the spell of disintegration and the dragon vaporizes in a pile of dust!");
+    LOGGER.info("你投下了瓦解的魔咒，龙在一堆灰尘中蒸发了!");
   }
 
 }

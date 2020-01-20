@@ -50,28 +50,29 @@ public class App {
    */
   public static void main(String[] args) {
     // GoF Strategy pattern
-    LOGGER.info("Green dragon spotted ahead!");
+//    LOGGER.info("前方发现绿龙!");
     var dragonSlayer = new DragonSlayer(new MeleeStrategy());
     dragonSlayer.goToBattle();
-    LOGGER.info("Red dragon emerges.");
+    LOGGER.info("红龙出现.");
     dragonSlayer.changeStrategy(new ProjectileStrategy());
     dragonSlayer.goToBattle();
-    LOGGER.info("Black dragon lands before you.");
+    LOGGER.info("黑龙降临在你面前.");
     dragonSlayer.changeStrategy(new SpellStrategy());
     dragonSlayer.goToBattle();
 
     // Java 8 Strategy pattern
-    LOGGER.info("Green dragon spotted ahead!");
+    LOGGER.info("前方发现绿龙!");
     dragonSlayer = new DragonSlayer(
-        () -> LOGGER.info("With your Excalibur you severe the dragon's head!"));
+        () ->{ LOGGER.info("用神剑将龙的头弄坏!");
+          System.out.println("匿名类");});
     dragonSlayer.goToBattle();
     LOGGER.info("Red dragon emerges.");
     dragonSlayer.changeStrategy(() -> LOGGER.info(
-        "You shoot the dragon with the magical crossbow and it falls dead on the ground!"));
+        "你用魔法cross射击龙，它掉在地上死了!"));
     dragonSlayer.goToBattle();
-    LOGGER.info("Black dragon lands before you.");
+    LOGGER.info("黑龙降临在你面前.");
     dragonSlayer.changeStrategy(() -> LOGGER.info(
-        "You cast the spell of disintegration and the dragon vaporizes in a pile of dust!"));
+        "你投下了瓦解的魔咒，龙在一堆灰尘中蒸发了!"));
     dragonSlayer.goToBattle();
   }
 }

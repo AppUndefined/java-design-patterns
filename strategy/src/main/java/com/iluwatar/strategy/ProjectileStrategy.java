@@ -35,6 +35,6 @@ public class ProjectileStrategy implements DragonSlayingStrategy {
 
   @Override
   public void execute() {
-    LOGGER.info("You shoot the dragon with the magical crossbow and it falls dead on the ground!");
+    LOGGER.info("你用魔法cross射击龙，它掉在地上死了!");
   }
 }
